@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
-
+#import "DetailViewController.h"
+#import "DataCache.h"
+@interface ViewController : UIViewController <UITableViewDelegate>
+{
+  IBOutlet UITableView *articleList;
+  DetailViewController *articleView;
+  NSMutableArray *articles;
+  DataCache *cache;
+  BOOL isEditing;
+  IBOutlet UIButton *editingButton;
+}
+- (void)loadData;
+- (IBAction)toggleEditMode:(id)sender;
 @end
