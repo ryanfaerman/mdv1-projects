@@ -7,8 +7,8 @@
 //
 
 #import "CustomTableCell.h"
-#import "DataCache.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "SDNetworkActivityIndicator.h"
 
 @implementation CustomTableCell
 
@@ -25,7 +25,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-      cache = [[DataCache alloc] init];
     }
     return self;
 }

@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "DetailViewController.h"
-#import "DataCache.h"
-@interface ViewController : UIViewController <UITableViewDelegate>
+@interface ViewController : UIViewController <UITableViewDelegate,UITabBarDelegate>
 {
   IBOutlet UITableView *articleList;
   DetailViewController *articleView;
   NSMutableArray *articles;
-  DataCache *cache;
-  BOOL isEditing;
-  IBOutlet UIButton *editingButton;
+  NSArray *categories;
+  NSInteger *currentFilter;
+  IBOutlet UITabBar *tabBar;
 }
 - (void)loadData;
-- (IBAction)toggleEditMode:(id)sender;
+- (NSArray*)dataForCategory:(NSInteger)category_id;
 @end

@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DataCache.h"
 @interface CustomTableCell : UITableViewCell
-{
-  DataCache *cache;
-}
+
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *teaser;
 @property (copy, nonatomic) NSString *imageUrl;

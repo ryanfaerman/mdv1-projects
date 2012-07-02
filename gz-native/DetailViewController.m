@@ -43,15 +43,14 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+  
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (IBAction)goBack:(id)sender
-{
-  // shut yo mouth
-  [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)setTitle:(NSString *)t

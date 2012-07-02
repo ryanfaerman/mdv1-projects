@@ -14,8 +14,8 @@
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *content;
 
+
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIWebView *contentView;
 
-- (IBAction)goBack:(id)sender;
 @end

@@ -8,8 +8,8 @@
 
 #import "ViewController.h"
 #import "CustomTableCell.h"
-#import "DataCache.h"
 #import "DetailViewController.h"
+#import "SVPullToRefresh.h"
 
 @interface ViewController ()
 
@@ -24,10 +24,14 @@
   
   // pre-alloc the detail view
   articleView = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+  currentFilter = 0;
+  categories = [[NSArray alloc] initWithObjects:@"Announcement", @"Review", @"Preview", @"Editorial", @"Video", nil];
   
-  // by default, we're not editing
-  isEditing = NO;
-  
+  [tabBar setSelectedItem:[tabBar.items objectAtIndex:(NSUInteger)currentFilter]];
+  [articleList addPullToRefreshWithActionHandler:^{
+    [self loadData];
+    
+  }];
   [super viewDidLoad];
 	
 }
@@ -62,12 +66,27 @@
   
   // make our articles a mutable array
   articles = [[NSMutableArray alloc] initWithArray:immutableArticles];
+  [articleList.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:2];
 }
+
+- (NSArray*)dataForCategory:(NSInteger)category_id
+{
+  NSMutableArray *filtered_articles = [[NSMutableArray alloc] init];
+
+  for (NSDictionary* article in articles) {
+    if ([[article objectForKey:@"type"] isEqualToString:[categories objectAtIndex:category_id]]) {
+      [filtered_articles addObject:article];
+    }
+  }
+  
+  return [[NSArray alloc] initWithArray:filtered_articles];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   // one row per article
-  return [articles count];
+  return [[self dataForCategory:(NSInteger)currentFilter] count];
 }
 
 
@@ -86,7 +105,7 @@
   CustomTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   
   // get the article for the current row
-  NSDictionary *article = [articles objectAtIndex:indexPath.row];
+  NSDictionary *article = [[self dataForCategory:(NSInteger)currentFilter] objectAtIndex:indexPath.row];
   
   // assign the row details
   cell.title = [article objectForKey:@"title"];
@@ -97,51 +116,33 @@
   return cell;
 }
 
-- (IBAction)toggleEditMode:(id)sender
-{ 
-  // toggle our tracking BOOL
-  isEditing = !isEditing;
-  
-  // Update the toggle button
-  if (isEditing) {
-    [editingButton setTitle:@"Done" forState:UIControlStateNormal];
-  } else {
-    [editingButton setTitle:@"Edit" forState:UIControlStateNormal];
-  }
-  
-  // (de-)activate the edit state 
-  [articleList setEditing:isEditing];
-}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   // get the article for the row
-  NSDictionary *article = [articles objectAtIndex:indexPath.row];
+  NSDictionary *article = [[self dataForCategory:(NSInteger)currentFilter] objectAtIndex:indexPath.row];
   
   // set the content bits
   articleView.content = [article objectForKey:@"body"];
-  articleView.title = [article objectForKey:@"title"];
+  //articleView.title = [article objectForKey:@"title"];
+  
   
   // unselect the row, gets rid of the blue selection
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   
   // show the subview
-  [self presentModalViewController:articleView animated:YES];
+  [self.navigationController pushViewController:articleView animated:YES];
+  articleView.titleLabel.text = [article objectForKey:@"title"];
+  [articleView.contentView loadHTMLString:[article objectForKey:@"body"] baseURL:nil];
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
-  // every day i'm de-le-tin'
-  return UITableViewCellEditingStyleDelete;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  if (editingStyle == UITableViewCellEditingStyleDelete) {
-    // remove from the array and clear it from the table view
-    [articles removeObjectAtIndex:indexPath.row];
-    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-  }
+  
+  currentFilter = (NSInteger *)item.tag;
+  //[self loadData];
+  [articleList reloadData];
 }
 
 @end
