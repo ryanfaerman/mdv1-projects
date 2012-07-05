@@ -32,9 +32,6 @@
 		75274114159BEA03000EBCED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75274113159BEA03000EBCED /* AppDelegate.m */; };
 		75274117159BEA03000EBCED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75274116159BEA03000EBCED /* ViewController.m */; };
 		7527411A159BEA03000EBCED /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75274118159BEA03000EBCED /* ViewController.xib */; };
-		7527412C159BEE5F000EBCED /* fighting.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 75274129159BEE5F000EBCED /* fighting.jpeg */; };
-		7527412D159BEE5F000EBCED /* lego.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7527412A159BEE5F000EBCED /* lego.jpg */; };
-		7527412E159BEE5F000EBCED /* men_in_black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7527412B159BEE5F000EBCED /* men_in_black.jpg */; };
 		75274132159BEEB4000EBCED /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75274130159BEEB4000EBCED /* DetailViewController.m */; };
 		7527413C159C11B7000EBCED /* CustomCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7527413B159C11B7000EBCED /* CustomCellView.xib */; };
 		7527413F159C127A000EBCED /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7527413E159C127A000EBCED /* CustomTableCell.m */; };
@@ -110,9 +107,6 @@
 		75274115159BEA03000EBCED /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		75274116159BEA03000EBCED /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		75274119159BEA03000EBCED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		75274129159BEE5F000EBCED /* fighting.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fighting.jpeg; path = ../../../../../Desktop/fighting.jpeg; sourceTree = "<group>"; };
-		7527412A159BEE5F000EBCED /* lego.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lego.jpg; path = ../../../../../Desktop/lego.jpg; sourceTree = "<group>"; };
-		7527412B159BEE5F000EBCED /* men_in_black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = men_in_black.jpg; path = ../../../../../Desktop/men_in_black.jpg; sourceTree = "<group>"; };
 		7527412F159BEEB4000EBCED /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		75274130159BEEB4000EBCED /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		7527413B159C11B7000EBCED /* CustomCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellView.xib; sourceTree = "<group>"; };
@@ -211,7 +205,6 @@
 				752311B315A0979C00EE197D /* SDNetworkActivityIndicator.m */,
 				752311B715A0AECE00EE197D /* SVPullToRefresh */,
 				75274155159D287D000EBCED /* Resources */,
-				75274122159BEDBF000EBCED /* NewsImages */,
 				7527410A159BEA03000EBCED /* Supporting Files */,
 			);
 			path = "gz-native";
@@ -226,16 +219,6 @@
 				75274111159BEA03000EBCED /* gz-native-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		75274122159BEDBF000EBCED /* NewsImages */ = {
-			isa = PBXGroup;
-			children = (
-				75274129159BEE5F000EBCED /* fighting.jpeg */,
-				7527412A159BEE5F000EBCED /* lego.jpg */,
-				7527412B159BEE5F000EBCED /* men_in_black.jpg */,
-			);
-			name = NewsImages;
 			sourceTree = "<group>";
 		};
 		75274155159D287D000EBCED /* Resources */ = {
@@ -352,9 +335,6 @@
 			files = (
 				7527410E159BEA03000EBCED /* InfoPlist.strings in Resources */,
 				7527411A159BEA03000EBCED /* ViewController.xib in Resources */,
-				7527412C159BEE5F000EBCED /* fighting.jpeg in Resources */,
-				7527412D159BEE5F000EBCED /* lego.jpg in Resources */,
-				7527412E159BEE5F000EBCED /* men_in_black.jpg in Resources */,
 				7527413C159C11B7000EBCED /* CustomCellView.xib in Resources */,
 				75274141159C1DBF000EBCED /* DetailViewController.xib in Resources */,
 				7527415A159D28B4000EBCED /* icon-72.png in Resources */,

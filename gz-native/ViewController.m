@@ -109,7 +109,10 @@
   
   // assign the row details
   cell.title = [article objectForKey:@"title"];
-  cell.teaser = [article objectForKey:@"blurb"];
+  
+  NSString *teaserText = [[NSString alloc] initWithString:[article objectForKey:@"blurb"]];
+  
+  cell.teaser = teaserText;
   cell.imageUrl = [article objectForKey:@"image"];
   
   // finally, return our prepared cell
